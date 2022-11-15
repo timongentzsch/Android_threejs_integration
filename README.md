@@ -26,12 +26,12 @@ Located in [package.json](app/src/main/assets/nodejs_src/package.json) and autom
 1) Clone this repo: `https://github.com/timongentzsch/Android_threejs_integration.git`
 2) Open in Android Studio and build
 
-> **_NOTE:_**  Current implementation of example uses stats-js to benchmark the render loop
+> **_NOTE:_**  Current implementation of example uses `stats-js` to benchmark the render loop
 > 
 ## Going further
 
-- The asset folder contains the src of the nodejs project as well as the optimized/bundled outputs of webpack in build. The src folder is excluded from the apk in the build process to keep the app size minimal.
-In order to bundle the assets from webpack into the build folder, all assets have to be imported using the import command:
+- The asset folder contains the [nodejs_src](app/src/main/assets/nodejs_src/) of the nodejs project as well as the optimized/bundled outputs of webpack in `build`. The src folder is excluded from the apk in the build process to keep the app size minimal.
+In order to bundle the assets from webpack into the build folder, all assets have to be imported using the `import` command:
 
 ```
 import MODEL from './assets/DamagedHelmet.gltf';
