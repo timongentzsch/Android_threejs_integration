@@ -8,21 +8,16 @@
  */
 
 import * as THREE from 'three';
-import * as STATS from 'stats-js';
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 
-import MODEL from './assets/DamagedHelmet.gltf';
-import BACKGROUND from './assets/royal_esplanade_1k.hdr'
+import MODEL from '@/assets/DamagedHelmet.gltf';
+import BACKGROUND from '@/assets/royal_esplanade_1k.hdr'
 
 
 let camera, scene, model, renderer;
-
-var stats = new STATS();
-stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
-document.body.appendChild( stats.dom );
 
 init();
 render();
@@ -66,7 +61,7 @@ function init() {
   renderer.setSize( window.innerWidth, window.innerHeight );
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1;
-  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
   container.appendChild( renderer.domElement );
 
   const controls = new OrbitControls( camera, renderer.domElement );
@@ -95,13 +90,11 @@ function onWindowResize() {
 //
 
 function render() {
-  stats.begin();
   requestAnimationFrame( render );
   renderer.render( scene, camera );
   if (model) {
     model.rotation.y += 0.01;
 }
-  stats.end();
 }
 
 // dom
